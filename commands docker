@@ -74,5 +74,154 @@ CONTAINER ID   IMAGE                       COMMAND                  CREATED     
 27a04ca37d31   dockersamples/static-site   "/bin/sh -c 'cd /usr…"   6 seconds ago   Up 4 seconds   80/tcp, 443/tcp   dazzling_chandrasekhar
 ➜  ~ docker rm 27a04ca37d31 --force  
 27a04ca37d31
+~ docker run -d -P dockersamples/static-site
+e5587a2c28c74edaeb9345a3d3778213a2c8adfac9c7f5a77cd91c94cfe8a64e
+➜  ~ docker ps                                 
+CONTAINER ID   IMAGE                       COMMAND                  CREATED              STATUS              PORTS                                                                                NAMES
+e5587a2c28c7   dockersamples/static-site   "/bin/sh -c 'cd /usr…"   About a minute ago   Up About a minute   0.0.0.0:49154->80/tcp, :::49154->80/tcp, 0.0.0.0:49153->443/tcp, :::49153->443/tcp   admiring_wright
+➜  ~ docker port e5587a2c28c7
+80/tcp -> 0.0.0.0:49154
+80/tcp -> :::49154
+443/tcp -> 0.0.0.0:49153
+443/tcp -> :::49153
+➜  ~ docker rm e5587a2c28c7 --force         
+e5587a2c28c7
+➜  ~ docker run -d -p 8080:80 dockersamples/static-site
+8cffd960422301317807f61a990169e62878168d7bfe065721d97fb1ce623a02
+  ~ docker images
+REPOSITORY                           TAG             IMAGE ID       CREATED         SIZE
+ubuntu                               latest          27941809078c   5 weeks ago     77.8MB
+composer                             latest          82997725a30b   6 months ago    193MB
+php                                  8.0.11-apache   924f7f622c18   9 months ago    472MB
+hello-world                          latest          feb5d9fea6a5   9 months ago    13.3kB
+node                                 14.17-alpine    1d909dafa77f   10 months ago   117MB
+mysql                                5.7.22          6bb891430fb6   3 years ago     372MB
+dockersamples/static-site            latest          f589ccde7957   6 years ago     191MB
+➜  ~ docker inspect f589ccde7957
+[
+    {
+        "Id": "sha256:f589ccde7957fa3ddf76a2eeee4d2f5d687b32176f559b703b6b8cacf6d36bc4",
+        "RepoTags": [
+            "dockersamples/static-site:latest"
+        ],
+        "RepoDigests": [
+            "dockersamples/static-site@sha256:daa686c61d7d239b7977e72157997489db49f316b9b9af3909d9f10fd28b2dec"
+        ],
+        "Parent": "",
+        "Comment": "",
+        "Created": "2016-03-18T10:59:54.367126Z",
+        "Container": "5d69bea014449857807d4f9e490d635a65d5cf42ed5e1b615bc18ef6a415fa66",
+        "ContainerConfig": {
+            "Hostname": "e5c68db50333",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "443/tcp": {},
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.9.12-1~jessie",
+                "AUTHOR=Docker"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "#(nop) CMD [\"/bin/sh\" \"-c\" \"cd /usr/share/nginx/html && sed -e \\\"s/Docker/$AUTHOR/\\\" Hello_docker.html > index.html ; nginx -g 'daemon off;'\"]"
+            ],
+            "Image": "sha256:a5f482d430001bb4a800ffa9414d77a4bf8df1dbbe3413da700050ae08753119",
+            "Volumes": null,
+            "WorkingDir": "/usr/share/nginx/html",
+            "Entrypoint": null,
+            "OnBuild": [],
+            "Labels": {}
+        },
+        "DockerVersion": "1.10.0",
+        "Author": "",
+        "Config": {
+            "Hostname": "e5c68db50333",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "443/tcp": {},
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.9.12-1~jessie",
+                "AUTHOR=Docker"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "cd /usr/share/nginx/html && sed -e \"s/Docker/$AUTHOR/\" Hello_docker.html > index.html ; nginx -g 'daemon off;'"
+            ],
+            "Image": "sha256:a5f482d430001bb4a800ffa9414d77a4bf8df1dbbe3413da700050ae08753119",
+            "Volumes": null,
+            "WorkingDir": "/usr/share/nginx/html",
+            "Entrypoint": null,
+            "OnBuild": [],
+            "Labels": {}
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 190521208,
+        "VirtualSize": 190521208,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/7201ddd2688fc4425eec6e3b7ef91d885ed56d7a59ffc802e4448d56f8e33722/diff:/var/lib/docker/overlay2/eccd9e40bcd30e7ffc351d2ec60088be18b1b114c0fd633394b3c34f581bf8d5/diff:/var/lib/docker/overlay2/41dddfb4fbb146e8b4046854e32d481db86f35e2d3f3a00c6da00a1c402ef93f/diff:/var/lib/docker/overlay2/7f15396603a88608313ffc811fef1b4fdce950e75cc38b3a9f1e70ef429aeea3/diff:/var/lib/docker/overlay2/ceb5d8b52f025f2b0f0064d0244cf7a13d06a0695ca862c503bc87111ff59405/diff:/var/lib/docker/overlay2/3fb0b2b1ea074ca93c8e618a287d768a7ea48cdaeebbeb4786632d499282dd54/diff:/var/lib/docker/overlay2/ed2c93a9c14be765a133b474b5e6a7023cb79775ef0fe7aefafe320fe0b757e9/diff:/var/lib/docker/overlay2/c7ef27486a0a15977a28d42ced7eb1045f00aee0501b3077e8bffb46a551fbbc/diff",
+                "MergedDir": "/var/lib/docker/overlay2/f0313cb2439b5cf227f6b00f50d40646941c128a8d0f736234af7b730eb4db84/merged",
+                "UpperDir": "/var/lib/docker/overlay2/f0313cb2439b5cf227f6b00f50d40646941c128a8d0f736234af7b730eb4db84/diff",
+                "WorkDir": "/var/lib/docker/overlay2/f0313cb2439b5cf227f6b00f50d40646941c128a8d0f736234af7b730eb4db84/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:917c0fc99b353c0397a9effdf042d72529de7c452669b1e11b05bec3088c7056",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:f0d7d68f89e518cc65ffb6892c4c21f135a9140ffc1911afe86521fff2c9ed17",
+                "sha256:3f3324023e75cc3fb9f72fee3a13b39fb5cf46f8c234a7c582c3ae69089911c3",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:b46149abb3e1c05e43a0e2a8c52e78a2cfbe8572b0a5f0234887e0f179258660"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]
+➜  ~ docker history f589ccde795
+IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+f589ccde7957   6 years ago   /bin/sh -c #(nop) CMD ["/bin/sh" "-c" "cd /u…   0B        
+<missing>      6 years ago   /bin/sh -c #(nop) WORKDIR /usr/share/nginx/h…   0B        
+<missing>      6 years ago   /bin/sh -c #(nop) COPY file:c8203f6bfe2ff6ba…   8.75kB    
+<missing>      6 years ago   /bin/sh -c mkdir -p /usr/share/nginx/html       0B        
+<missing>      6 years ago   /bin/sh -c #(nop) ENV AUTHOR=Docker             0B        
+<missing>      6 years ago   /bin/sh -c #(nop) CMD ["nginx" "-g" "daemon …   0B        
+<missing>      6 years ago   /bin/sh -c #(nop) EXPOSE 443/tcp 80/tcp         0B        
+<missing>      6 years ago   /bin/sh -c ln -sf /dev/stdout /var/log/nginx…   22B       
+<missing>      6 years ago   /bin/sh -c apt-key adv --keyserver hkp://pgp…   65.4MB    
+<missing>      6 years ago   /bin/sh -c #(nop) ENV NGINX_VERSION=1.9.12-1…   0B        
+<missing>      6 years ago   /bin/sh -c #(nop) MAINTAINER NGINX Docker Ma…   0B        
+<missing>      6 years ago   /bin/sh -c #(nop) CMD ["/bin/bash"]             0B        
+<missing>      6 years ago   /bin/sh -c #(nop) ADD file:b5391cb13172fb513…   125MB     
+➜  ~ 
 
 
